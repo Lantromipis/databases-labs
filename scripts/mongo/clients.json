@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "664ce399f542cb7c7020a31d"
+    },
+    "name": "Garry Gonchar",
+    "phone": "12312345",
+    "email": "gonchar97@mail.ru",
+    "birthday": "13.07.1997",
+    "login": "sidor97",
+    "address": "Lenina 1",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "664ce41a9ad54ba2d8017c99"
+    },
+    "name": "Antonina Petrova",
+    "phone": "18374282",
+    "email": "petrovatonya69@mail.ru",
+    "birthday": "17.03.1969",
+    "login": "sidor97",
+    "address": "Lenina 2",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "664ce41a9ad54ba2d8016c99"
+    },
+    "name": "Fedor Sumkin",
+    "phone": "91288314",
+    "email": "sumkin79@mail.ru",
+    "birthday": "25.09.1979",
+    "login": "sidor97",
+    "address": "Lenina 3",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  }
+]

@@ -1,0 +1,20 @@
+[2024-06-08T18:44:48.538+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-08T18:44:48.552+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_loader.load_payments manual__2024-06-08T18:44:47.592425+00:00 [queued]>
+[2024-06-08T18:44:48.557+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_loader.load_payments manual__2024-06-08T18:44:47.592425+00:00 [queued]>
+[2024-06-08T18:44:48.557+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-08T18:44:48.566+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_payments> on 2024-06-08 18:44:47.592425+00:00
+[2024-06-08T18:44:48.569+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=3281) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-08T18:44:48.570+0000] {standard_task_runner.py:63} INFO - Started process 3286 to run task
+[2024-06-08T18:44:48.570+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'pg_loader', 'load_payments', 'manual__2024-06-08T18:44:47.592425+00:00', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/load_pg_dag.py', '--cfg-path', '/tmp/tmpbqahl4xf']
+[2024-06-08T18:44:48.570+0000] {standard_task_runner.py:91} INFO - Job 55: Subtask load_payments
+[2024-06-08T18:44:48.597+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_loader.load_payments manual__2024-06-08T18:44:47.592425+00:00 [running]> on host 945bac6cf142
+[2024-06-08T18:44:48.646+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_loader' AIRFLOW_CTX_TASK_ID='load_payments' AIRFLOW_CTX_EXECUTION_DATE='2024-06-08T18:44:47.592425+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-08T18:44:47.592425+00:00'
+[2024-06-08T18:44:48.646+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-08T18:44:48.659+0000] {base.py:84} INFO - Using connection ID '***-etl' for task execution.
+[2024-06-08T18:44:48.667+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-08T18:44:48.668+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-08T18:44:48.674+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pg_loader, task_id=load_payments, run_id=manual__2024-06-08T18:44:47.592425+00:00, execution_date=20240608T184447, start_date=20240608T184448, end_date=20240608T184448
+[2024-06-08T18:44:48.708+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-08T18:44:48.714+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,52 @@
+[
+  {
+    "_id": {
+      "$oid": "664cebc048f231bebf1162bf"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664cdf513155e57606fd6d2f"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce399f542cb7c7020a31d"
+      }
+    },
+    "order_dish": [
+    ],
+    "payed_by_bonuses": 100,
+    "cost": 1000,
+    "payment": 900,
+    "bonus_for_visit": 124,
+    "statuses": [
+      {
+        "status": "OPEN",
+        "time": "2024-04-21T17:39:49Z"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-04-21T17:49:49Z"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-04-21T18:19:49Z"
+      },
+      {
+        "status": "CLOSED",
+        "time": "2024-04-21T18:39:49Z"
+      }
+    ],
+    "final_status": "CLOSED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  }
+]

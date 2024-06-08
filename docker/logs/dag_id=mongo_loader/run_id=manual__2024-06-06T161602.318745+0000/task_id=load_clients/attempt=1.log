@@ -1,0 +1,111 @@
+[2024-06-06T16:16:03.010+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-06T16:16:03.024+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mongo_loader.load_clients manual__2024-06-06T16:16:02.318745+00:00 [queued]>
+[2024-06-06T16:16:03.029+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mongo_loader.load_clients manual__2024-06-06T16:16:02.318745+00:00 [queued]>
+[2024-06-06T16:16:03.030+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-06T16:16:03.037+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_clients> on 2024-06-06 16:16:02.318745+00:00
+[2024-06-06T16:16:03.040+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=313) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-06T16:16:03.041+0000] {standard_task_runner.py:63} INFO - Started process 314 to run task
+[2024-06-06T16:16:03.041+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mongo_loader', 'load_clients', 'manual__2024-06-06T16:16:02.318745+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/load_mongo_dag.py', '--cfg-path', '/tmp/tmpu_ndw3it']
+[2024-06-06T16:16:03.042+0000] {standard_task_runner.py:91} INFO - Job 26: Subtask load_clients
+[2024-06-06T16:16:03.069+0000] {task_command.py:426} INFO - Running <TaskInstance: mongo_loader.load_clients manual__2024-06-06T16:16:02.318745+00:00 [running]> on host 945bac6cf142
+[2024-06-06T16:16:03.112+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mongo_loader' AIRFLOW_CTX_TASK_ID='load_clients' AIRFLOW_CTX_EXECUTION_DATE='2024-06-06T16:16:02.318745+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-06T16:16:02.318745+00:00'
+[2024-06-06T16:16:03.112+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-06T16:16:03.125+0000] {base.py:84} INFO - Using connection ID 'mongo-etl' for task execution.
+[2024-06-06T16:16:03.139+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-06T16:16:03.140+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/load_mongo_dag.py", line 14, in load_clients
+    return jsonify(list(clients_cursor))
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/cursor.py", line 1243, in next
+    if len(self.__data) or self._refresh():
+                           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/cursor.py", line 1160, in _refresh
+    self.__send_message(q)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/cursor.py", line 1039, in __send_message
+    response = client._run_operation(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 1425, in _run_operation
+    return self._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 1534, in _retryable_read
+    return self._retry_internal(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 1501, in _retry_internal
+    ).run()
+      ^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 2347, in run
+    return self._read() if self._is_read else self._write()
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 2479, in _read
+    with self._client._conn_from_server(self._read_pref, self._server, self._session) as (
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 1351, in _conn_from_server
+    with self._checkout(server, session) as conn:
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/mongo_client.py", line 1260, in _checkout
+    with server.checkout(handler=err_handler) as conn:
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/pool.py", line 1763, in checkout
+    conn = self._get_conn(checkout_started_time, handler=handler)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/pool.py", line 1921, in _get_conn
+    conn = self.connect(handler=handler)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/pool.py", line 1725, in connect
+    conn.authenticate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/pool.py", line 1098, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/auth.py", line 656, in authenticate
+    auth_func(credentials, conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/auth.py", line 560, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/auth.py", line 299, in _authenticate_scram
+    res = conn.command(source, cmd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/helpers.py", line 342, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/pool.py", line 988, in command
+    return command(
+           ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/network.py", line 212, in command
+    helpers._check_command_response(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymongo/helpers.py", line 248, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: Authentication failed., full error: {'ok': 0.0, 'errmsg': 'Authentication failed.', 'code': 18, 'codeName': 'AuthenticationFailed'}
+[2024-06-06T16:16:03.147+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=mongo_loader, task_id=load_clients, run_id=manual__2024-06-06T16:16:02.318745+00:00, execution_date=20240606T161602, start_date=20240606T161603, end_date=20240606T161603
+[2024-06-06T16:16:03.154+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 26 for task load_clients (Authentication failed., full error: {'ok': 0.0, 'errmsg': 'Authentication failed.', 'code': 18, 'codeName': 'AuthenticationFailed'}; 314)
+[2024-06-06T16:16:03.180+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-06T16:16:03.190+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-06T16:16:03.191+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

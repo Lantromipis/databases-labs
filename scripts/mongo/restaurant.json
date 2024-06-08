@@ -1,0 +1,38 @@
+[
+  {
+    "_id": {
+      "$oid": "664cdf513155e57606fd6d2f"
+    },
+    "name": "Fresh Meat",
+    "menu": [],
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "664ce210d59036f23b28340f"
+    },
+    "name": "Dva dota",
+    "menu": [],
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "664ce23cf74d48919813afc9"
+    },
+    "name": "Clowns home",
+    "menu": [],
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716223404000"
+      }
+    }
+  }
+]
