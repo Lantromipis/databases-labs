@@ -205,7 +205,7 @@
       }
     }
   },
-    {
+  {
     "_id": {
       "$oid": "6665c401bc6e47276a62c4d0"
     },
@@ -268,6 +268,138 @@
     "update_time": {
       "$date": {
         "$numberLong": "1713711645000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6665fb76324ffcfaf356fc3c"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664cdf513155e57606fd6d2f"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1713711645000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce41a9ad54ba2d8016c99"
+      }
+    },
+    "order_dish": [
+      {
+        "id": {
+          "$oid": "6665fb49c958bdc3cdc8ade5"
+        },
+        "name": "Chicken soup",
+        "price": 300,
+        "quantity": 30
+      },
+      {
+        "id": {
+          "$oid": "6665fb723b6bb3847eaa9508"
+        },
+        "name": "Sea food salad",
+        "price": 500,
+        "quantity": 30
+      }
+    ],
+    "payed_by_bonuses": 134,
+    "cost": 14000,
+    "payment": 14000,
+    "bonus_for_visit": 280,
+    "statuses": [
+      {
+        "status": "CLOSED",
+        "time": "2024-04-21 13:45:31"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-04-21 13:42:32"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-04-21 12:49:29"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-04-21 12:18:22"
+      }
+    ],
+    "final_status": "CLOSED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1713711645000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6665fbbd23f5a6c837c764d2"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664ce210d59036f23b28340f"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1713805245000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce41a9ad54ba2d8017c99"
+      }
+    },
+    "order_dish": [
+      {
+        "id": {
+          "$oid": "6665fbc06215cd84707241b0"
+        },
+        "name": "Onion soup",
+        "price": 300,
+        "quantity": 20
+      },
+      {
+        "id": {
+          "$oid": "6665fbc4b0bad09d70b40bd6"
+        },
+        "name": "Pizza margarita",
+        "price": 550,
+        "quantity": 20
+      }
+    ],
+    "payed_by_bonuses": 182,
+    "cost": 17000,
+    "payment": 17000,
+    "bonus_for_visit": 430,
+    "statuses": [
+      {
+        "status": "CLOSED",
+        "time": "2024-04-22 17:01:18"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-04-22 16:43:25"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-04-22 16:11:32"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-04-22 16:00:45"
+      }
+    ],
+    "final_status": "CLOSED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1713805245000"
       }
     }
   }
