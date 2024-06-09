@@ -204,5 +204,71 @@
         "$numberLong": "1716299121000"
       }
     }
+  },
+    {
+    "_id": {
+      "$oid": "6665c401bc6e47276a62c4d0"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664cdf513155e57606fd6d2f"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1716303645000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce41a9ad54ba2d8016c99"
+      }
+    },
+    "order_dish": [
+      {
+        "id": {
+          "$oid": "6665c401bc6e47276a62c4d0"
+        },
+        "name": "Borsch",
+        "price": 300,
+        "quantity": 2
+      },
+      {
+        "id": {
+          "$oid": "6665c4073005ccd767b82bef"
+        },
+        "name": "Pizza margarita",
+        "price": 550,
+        "quantity": 2
+      }
+    ],
+    "payed_by_bonuses": 182,
+    "cost": 1700,
+    "payment": 1700,
+    "bonus_for_visit": 43,
+    "statuses": [
+      {
+        "status": "CLOSED",
+        "time": "2024-05-21 16:01:18"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-05-21 15:43:25"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-05-21 15:11:32"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-05-21 15:00:45"
+      }
+    ],
+    "final_status": "CLOSED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716303645000"
+      }
+    }
   }
 ]

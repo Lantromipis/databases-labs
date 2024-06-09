@@ -23,8 +23,8 @@
 8. Создаем connection с id `mongo-etl`
    1. conn-id: mongo-etl
    2. host: mongo-etl
-   3. schema: etl
+   3. schema: admin
    4. user: admin
    5. password: admin
    6. port: 27017
-9. 
+9. docker-compose up -d --no-deps --build api-service

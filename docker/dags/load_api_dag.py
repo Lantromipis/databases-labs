@@ -49,6 +49,8 @@ def load_deliveryman(**kwargs):
     pg_conn.close()
 
 
+# используем инкрементальную загрузку: запрашиваем и вставляем в stg только те записи, у которыйх delivery_time больше, чем раньше
+# после отработки DAG сохраняем новый последний delivery_time в stg.settings
 def load_delivery(**kwargs):
     pg_hook = PostgresHook(postgres_conn_id='postgres-etl')
     pg_conn = pg_hook.get_conn()
@@ -70,7 +72,7 @@ def load_delivery(**kwargs):
             query_params = {
                 'limit': DELIVERY_BATCH_SIZE,
                 'offset': offset,
-                'delivery_time_gt': latest_delivery_time_fetched,
+                'delivery_time_gt': latest_delivery_time_fetched[1],
             }
 
         response = requests.get("http://api-service:8080/api/delivery", params=query_params)

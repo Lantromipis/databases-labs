@@ -37,7 +37,7 @@ def fill_deliveryman_from_api(**kwargs):
     pg_cursor = pg_conn.cursor(cursor_factory=NamedTupleCursor)
     pg_insert_cursor = pg_conn.cursor()
 
-    pg_cursor.execute('SELECT * FROM stg.api_delivery')
+    pg_cursor.execute('SELECT * FROM stg.api_deliveryman')
 
     while True:
         stg_api_deliverymen = pg_cursor.fetchmany(STG_API_DELIVERYMAN_BATCH_SIZE)
@@ -45,13 +45,13 @@ def fill_deliveryman_from_api(**kwargs):
             break
 
         for stg_api_deliveryman in stg_api_deliverymen:
-            delivery_json = json.loads(stg_api_deliveryman.json_value)
+            deliveryman_json = json.loads(stg_api_deliveryman.json_value)
 
             pg_insert_cursor.execute(
                 "INSERT INTO dds.dm_deliveryman(id, name) VALUES (%s, %s) "
                 "ON CONFLICT(id) DO UPDATE "
                 "SET name = excluded.name",
-                (stg_api_deliveryman.id, delivery_json["name"])
+                (stg_api_deliveryman.id, deliveryman_json["name"])
             )
             pass
 
@@ -111,7 +111,7 @@ def fill_delivery_from_api(**kwargs):
             new_deliveryman_id = resolve_deliveryman_id(pg_helper_fetch_cursor, delivery_json["deliveryman_id"])
 
             # маппинг айдишки для заказа
-            new_order_id = resolve_deliveryman_id(pg_helper_fetch_cursor, delivery_json["order_id"])
+            new_order_id = resolve_order_id(pg_helper_fetch_cursor, delivery_json["order_id"])
 
             pg_insert_cursor.execute(
                 "INSERT INTO dds.dm_delivery(id, deliveryman_id, order_id, rating, tips) VALUES (%s, %s, %s, %s, %s) "
