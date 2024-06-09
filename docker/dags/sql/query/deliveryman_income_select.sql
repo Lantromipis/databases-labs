@@ -10,5 +10,5 @@ FROM dds.dm_deliveryman dm
          JOIN dds.dm_delivery d ON d.deliveryman_id = dm.id
          JOIN dds.dm_order o on o.id = d.order_id
 WHERE o.final_status = 'CLOSED'
-  AND o.order_date BETWEEN '2024-04-21' AND '2024-05-21'
+  AND o.order_date BETWEEN %s AND %s
 GROUP BY dm.id, dm.name;

@@ -6,24 +6,21 @@ CREATE TABLE IF NOT EXISTS mongo_clients
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
-    json_value   TEXT NOT NULL,
-    updated_when TIMESTAMP
+    json_value   TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS mongo_restaurants
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
-    json_value   TEXT NOT NULL,
-    updated_when TIMESTAMP
+    json_value   TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS mongo_orders
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
-    json_value   TEXT NOT NULL,
-    updated_when TIMESTAMP
+    json_value   TEXT NOT NULL
 );
 
 /* Postgres */
@@ -34,7 +31,8 @@ CREATE TABLE IF NOT EXISTS postgres_category
     original_id BIGINT NOT NULL UNIQUE,
     name        VARCHAR(256),
     percent     DOUBLE PRECISION,
-    min_payment DOUBLE PRECISION
+    min_payment DOUBLE PRECISION,
+    version     BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS postgres_client
@@ -42,7 +40,8 @@ CREATE TABLE IF NOT EXISTS postgres_client
     id            BIGSERIAL PRIMARY KEY,
     original_id   BIGINT NOT NULL UNIQUE,
     bonus_balance DOUBLE PRECISION,
-    category_id   BIGINT
+    category_id   BIGINT,
+    version       BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS postgres_dish
@@ -50,7 +49,8 @@ CREATE TABLE IF NOT EXISTS postgres_dish
     id          BIGSERIAL PRIMARY KEY,
     original_id BIGINT NOT NULL UNIQUE,
     name        VARCHAR(256),
-    price       DOUBLE PRECISION
+    price       DOUBLE PRECISION,
+    version     BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS postgres_payment
@@ -63,7 +63,8 @@ CREATE TABLE IF NOT EXISTS postgres_payment
     order_id    BIGINT,
     order_time  TIMESTAMP,
     order_sum   DOUBLE PRECISION,
-    tips        DOUBLE PRECISION
+    tips        DOUBLE PRECISION,
+    version     BIGINT
 );
 
 /* API */
@@ -72,16 +73,14 @@ CREATE TABLE IF NOT EXISTS api_deliveryman
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
-    json_value   TEXT NOT NULL,
-    updated_when TIMESTAMP
+    json_value   TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS api_delivery
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
-    json_value   TEXT NOT NULL,
-    updated_when TIMESTAMP
+    json_value   TEXT NOT NULL
 );
 
 /* settings */
