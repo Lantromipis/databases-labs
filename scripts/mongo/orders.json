@@ -10,7 +10,7 @@
     },
     "order_date": {
       "$date": {
-        "$numberLong": "1716223404000"
+        "$numberLong": "1716286522000"
       }
     },
     "client": {
@@ -19,33 +19,189 @@
       }
     },
     "order_dish": [
-    ],
-    "payed_by_bonuses": 100,
-    "cost": 1000,
-    "payment": 900,
-    "bonus_for_visit": 124,
-    "statuses": [
       {
-        "status": "OPEN",
-        "time": "2024-04-21T17:39:49Z"
+        "id": {
+          "$oid": "770244ac855a44c5287cb2ac"
+        },
+        "name": "Steak",
+        "price": 1000,
+        "quantity": 2
       },
       {
-        "status": "COOKING",
-        "time": "2024-04-21T17:49:49Z"
+        "id": {
+          "$oid": "080d4248a4773012342b117a"
+        },
+        "name": "Potato",
+        "price": 250,
+        "quantity": 2
+      },
+      {
+        "id": {
+          "$oid": "7b27444b845e2740c8774b47"
+        },
+        "name": "Apple juice",
+        "price": 150,
+        "quantity": 4
+      }
+    ],
+    "payed_by_bonuses": 0,
+    "cost": 3100,
+    "payment": 3100,
+    "bonus_for_visit": 150,
+    "statuses": [
+      {
+        "status": "CLOSED",
+        "time": "2024-05-21 10:15:22"
       },
       {
         "status": "DELIVERING",
-        "time": "2024-04-21T18:19:49Z"
+        "time": "2024-05-21 04:22:14"
       },
       {
-        "status": "CLOSED",
-        "time": "2024-04-21T18:39:49Z"
+        "status": "COOKING",
+        "time": "2024-05-21 04:11:20"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-05-21 08:28:33"
       }
     ],
     "final_status": "CLOSED",
     "update_time": {
       "$date": {
-        "$numberLong": "1716223404000"
+        "$numberLong": "1716286522000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666597b4d01d982767c156fa"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664ce210d59036f23b28340f"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1716293602000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce41a9ad54ba2d8017c99"
+      }
+    },
+    "order_dish": [
+      {
+        "id": {
+          "$oid": "666597b4d01d982767c156fa"
+        },
+        "name": "Chicken nuggets",
+        "price": 300,
+        "quantity": 3
+      },
+      {
+        "id": {
+          "$oid": "666597b4d01d982767c156fa"
+        },
+        "name": "French fries",
+        "price": 250,
+        "quantity": 2
+      },
+      {
+        "id": {
+          "$oid": "666597b4d01d982767c156fa"
+        },
+        "name": "Cheeseburger",
+        "price": 450,
+        "quantity": 2
+      }
+    ],
+    "payed_by_bonuses": 10,
+    "cost": 1400,
+    "payment": 1400,
+    "bonus_for_visit": 24,
+    "statuses": [
+      {
+        "status": "CLOSED",
+        "time": "2024-05-21 13:15:12"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-05-21 12:45:38"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-05-21 12:16:57"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-05-21 12:13:22"
+      }
+    ],
+    "final_status": "CLOSED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716297312000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666599a7d0d76ee635d15c93"
+    },
+    "restaurant": {
+      "id": {
+        "$oid": "664ce23cf74d48919813afc9"
+      }
+    },
+    "order_date": {
+      "$date": {
+        "$numberLong": "1716293902000"
+      }
+    },
+    "client": {
+      "id": {
+        "$oid": "664ce41a9ad54ba2d8017c99"
+      }
+    },
+    "order_dish": [
+      {
+        "id": {
+          "$oid": "666599b65b336b9776c5b545"
+        },
+        "name": "Ice cream",
+        "price": 300,
+        "quantity": 3
+      }
+    ],
+    "payed_by_bonuses": 0,
+    "cost": 900,
+    "payment": 900,
+    "bonus_for_visit": 12,
+    "statuses": [
+      {
+        "status": "CANCELLED",
+        "time": "2024-05-21 13:45:31"
+      },
+      {
+        "status": "DELIVERING",
+        "time": "2024-05-21 13:42:32"
+      },
+      {
+        "status": "COOKING",
+        "time": "2024-05-21 12:49:29"
+      },
+      {
+        "status": "OPEN",
+        "order_date": "2024-05-21 12:18:22"
+      }
+    ],
+    "final_status": "CANCELLED",
+    "update_time": {
+      "$date": {
+        "$numberLong": "1716299121000"
       }
     }
   }

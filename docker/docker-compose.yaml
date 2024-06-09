@@ -68,6 +68,18 @@ services:
         aliases:
           - mongo-etl
 
+  api-service:
+    image: databases-api-service
+    build:
+      dockerfile: ../lab1-api-service/Dockerfile
+      context: ../lab1-api-service
+    networks:
+      db-etl-network:
+        aliases:
+          - api-service
+    ports:
+      - "8081:8080"
+
   # -------------------- airflow -------------------------
   postgres:
     image: postgres:13

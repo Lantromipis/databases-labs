@@ -4,11 +4,11 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.utils.dates import days_ago
 from psycopg2.extras import NamedTupleCursor
 
+# все по 1, чтобы эмулировать батчи на малом количестве данных
 CLIENTS_BATCH_SIZE = 1
 CATEGORIES_BATCH_SIZE = 1
 DISHES_BATCH_SIZE = 1
 PAYMENT_BATCH_SIZE = 1
-
 
 def load_clients(**kwargs):
     pg_hook = PostgresHook(postgres_conn_id='postgres-etl')
