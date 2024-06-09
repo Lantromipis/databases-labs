@@ -1,7 +1,7 @@
-CREATE SCHEMA src;
+CREATE SCHEMA IF NOT EXISTS src;
 SET SEARCH_PATH TO src;
 
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS category
 (
     category_id BIGSERIAL PRIMARY KEY,
     name        VARCHAR(256),
@@ -9,21 +9,21 @@ CREATE TABLE category
     min_payment DOUBLE PRECISION
 );
 
-CREATE TABLE client
+CREATE TABLE IF NOT EXISTS client
 (
     client_id     BIGSERIAL PRIMARY KEY,
     bonus_balance DOUBLE PRECISION,
     category_id   BIGINT REFERENCES category (category_id)
 );
 
-CREATE TABLE dish
+CREATE TABLE IF NOT EXISTS dish
 (
     dish_id BIGSERIAL PRIMARY KEY,
     name    VARCHAR(256),
     price   DOUBLE PRECISION
 );
 
-CREATE TABLE payment
+CREATE TABLE IF NOT EXISTS payment
 (
     payment_id  BIGSERIAL PRIMARY KEY,
     client_id   BIGINT REFERENCES client (client_id),
@@ -35,7 +35,7 @@ CREATE TABLE payment
     tips        DOUBLE PRECISION
 );
 
-CREATE TABLE logs
+CREATE TABLE IF NOT EXISTS logs
 (
     id         BIGSERIAL PRIMARY KEY,
     table_name VARCHAR(256),

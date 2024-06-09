@@ -1,8 +1,8 @@
-CREATE SCHEMA stg;
+CREATE SCHEMA IF NOT EXISTS stg;
 SET SEARCH_PATH TO stg;
 
 /* Mongo */
-CREATE TABLE mongo_clients
+CREATE TABLE IF NOT EXISTS mongo_clients
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
@@ -10,7 +10,7 @@ CREATE TABLE mongo_clients
     updated_when TIMESTAMP
 );
 
-CREATE TABLE mongo_restaurants
+CREATE TABLE IF NOT EXISTS mongo_restaurants
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
@@ -18,7 +18,7 @@ CREATE TABLE mongo_restaurants
     updated_when TIMESTAMP
 );
 
-CREATE TABLE mongo_orders
+CREATE TABLE IF NOT EXISTS mongo_orders
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
@@ -28,7 +28,7 @@ CREATE TABLE mongo_orders
 
 /* Postgres */
 
-CREATE TABLE postgres_category
+CREATE TABLE IF NOT EXISTS postgres_category
 (
     id          BIGSERIAL PRIMARY KEY,
     original_id BIGINT NOT NULL UNIQUE,
@@ -37,7 +37,7 @@ CREATE TABLE postgres_category
     min_payment DOUBLE PRECISION
 );
 
-CREATE TABLE postgres_client
+CREATE TABLE IF NOT EXISTS postgres_client
 (
     id            BIGSERIAL PRIMARY KEY,
     original_id   BIGINT NOT NULL UNIQUE,
@@ -45,7 +45,7 @@ CREATE TABLE postgres_client
     category_id   BIGINT
 );
 
-CREATE TABLE postgres_dish
+CREATE TABLE IF NOT EXISTS postgres_dish
 (
     id          BIGSERIAL PRIMARY KEY,
     original_id BIGINT NOT NULL UNIQUE,
@@ -53,7 +53,7 @@ CREATE TABLE postgres_dish
     price       DOUBLE PRECISION
 );
 
-CREATE TABLE postgres_payment
+CREATE TABLE IF NOT EXISTS postgres_payment
 (
     id          BIGSERIAL PRIMARY KEY,
     original_id BIGINT NOT NULL UNIQUE,
@@ -68,7 +68,7 @@ CREATE TABLE postgres_payment
 
 /* API */
 
-CREATE TABLE api_deliveryman
+CREATE TABLE IF NOT EXISTS api_deliveryman
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
@@ -76,7 +76,7 @@ CREATE TABLE api_deliveryman
     updated_when TIMESTAMP
 );
 
-CREATE TABLE api_delivery
+CREATE TABLE IF NOT EXISTS api_delivery
 (
     id           BIGSERIAL PRIMARY KEY,
     original_id  TEXT NOT NULL UNIQUE,
@@ -86,7 +86,7 @@ CREATE TABLE api_delivery
 
 /* settings */
 
-CREATE TABLE settings
+CREATE TABLE IF NOT EXISTS settings
 (
     key   VARCHAR(128) PRIMARY KEY,
     value TEXT
