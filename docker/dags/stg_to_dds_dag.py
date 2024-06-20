@@ -5,6 +5,7 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.utils.dates import days_ago
 from psycopg2.extras import NamedTupleCursor
+from datetime import datetime
 
 STG_API_DELIVERYMAN_BATCH_SIZE = 1
 STG_API_ORDER_BATCH_SIZE = 1
@@ -76,12 +77,28 @@ def fill_orders_from_mongo(**kwargs):
             order_json = json.loads(stg_mongo_order.json_value)
 
             order_date = order_json["order_date"]["$date"]
+            order_date_datetime = datetime.fromisoformat(order_date)
 
             pg_insert_cursor.execute(
-                "INSERT INTO dds.dm_order(id, final_status, cost, order_date) VALUES (%s, %s, %s, %s) "
+                "INSERT INTO dds.dm_time(time_mark, year, month, day, time, date) VALUES "
+                "(%s, %s, %s, %s, %s, %s) RETURNING id",
+                (order_date_datetime,
+                 order_date_datetime.year,
+                 order_date_datetime.month,
+                 order_date_datetime.day,
+                 order_date_datetime.time(),
+                 order_date_datetime.date()
+                 )
+            )
+
+            timee_id_record = pg_insert_cursor.fetchone()
+            time_id = timee_id_record[0]
+
+            pg_insert_cursor.execute(
+                "INSERT INTO dds.dm_order(id, final_status, cost, order_time_id) VALUES (%s, %s, %s, %s) "
                 "ON CONFLICT(id) DO UPDATE "
-                "SET final_status = excluded.final_status, cost = excluded.cost, order_date = excluded.order_date",
-                (stg_mongo_order.id, order_json["final_status"], order_json["cost"], order_date)
+                "SET final_status = excluded.final_status, cost = excluded.cost, order_time_id = excluded.order_time_id",
+                (stg_mongo_order.id, order_json["final_status"], order_json["cost"], time_id)
             )
             pass
 

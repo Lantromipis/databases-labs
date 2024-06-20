@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import datetime
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -38,52 +38,34 @@ def fill_deliveryman_income(**kwargs):
     pg_insert_cursor = pg_conn.cursor()
 
     pg_cursor.execute("SET SEARCH_PATH TO cdm;")
-    pg_cursor.execute("SELECT order_date FROM dds.dm_order ORDER BY order_date ASC LIMIT 1")
-    oldest_order = pg_cursor.fetchone()
-    if oldest_order is None:
-        print("No orders yet")
-        return
-
-    oldest_order_date = oldest_order[0]
-
-    now_time = datetime.now()
-    current_period_start = period_start_for_date(oldest_order_date)
-    current_period_end = period_end_for_date(oldest_order_date)
-
-    if current_period_end > now_time:
-        print("The only one period not ended. Not filling CDM delivery income.")
-        return
-
     pg_insert_cursor.execute("TRUNCATE cdm.deliveryman_income")
 
-    while current_period_end < now_time:
-        query_str = open('dags/sql/query/deliveryman_income_select.sql').read()
-        pg_cursor.execute(query_str, (current_period_start, current_period_end))
+    query_str = open('dags/sql/query/deliveryman_income_select.sql').read()
+    pg_cursor.execute(query_str, ())
 
-        calculated_records = pg_cursor.fetchall()
+    calculated_records = pg_cursor.fetchall()
 
-        for record in calculated_records:
-            deliveryman_id = record.deliveryman_id
-            deliveryman_name = record.deliveryman_name
-            orders_amount = record.orders_amount
-            orders_total_cost = record.orders_total_cost
-            company_commission = record.company_commission
-            rating = record.rating
-            tips = record.tips
-            deliveryman_order_income = record.deliveryman_order_income
+    for record in calculated_records:
+        deliveryman_id = record.deliveryman_id
+        deliveryman_name = record.deliveryman_name
+        year = record.year
+        month = record.month
+        orders_amount = record.orders_amount
+        orders_total_cost = record.orders_total_cost
+        company_commission = record.company_commission
+        rating = record.rating
+        tips = record.tips
+        deliveryman_order_income = record.deliveryman_order_income
 
-            pg_insert_cursor.execute(
-                "INSERT INTO cdm.deliveryman_income(deliveryman_id, deliveryman_name, year, "
-                "month, orders_amount, orders_total_cost, rating, company_commission,"
-                " deliveryman_order_income, tips)"
-                " VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                (deliveryman_id, deliveryman_name, current_period_end.year, current_period_end.month,
-                 orders_amount, orders_total_cost, rating, company_commission, deliveryman_order_income, tips)
-            )
-            pass
-
-        current_period_start = current_period_end
-        current_period_end = period_end_for_date(current_period_end)
+        pg_insert_cursor.execute(
+            "INSERT INTO cdm.deliveryman_income(deliveryman_id, deliveryman_name, year, "
+            "month, orders_amount, orders_total_cost, rating, company_commission,"
+            " deliveryman_order_income, tips)"
+            " VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+            (deliveryman_id, deliveryman_name, year, month,
+             orders_amount, orders_total_cost, rating, company_commission, deliveryman_order_income, tips)
+        )
+        pass
 
     pg_conn.commit()
     pg_conn.close()
