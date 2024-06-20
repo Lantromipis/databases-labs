@@ -9,7 +9,7 @@ SELECT dm.id                                      as deliveryman_id,
        sum(o.cost) * 0.5                          as company_commission,
        deliveryman_order_income(o.cost, d.rating) as deliveryman_order_income
 FROM dds.dm_deliveryman dm
-         JOIN dds.dm_delivery d ON d.deliveryman_id = dm.id
+         JOIN dds.fact_delivery d ON d.deliveryman_id = dm.id
          JOIN dds.dm_order o on o.id = d.order_id
          JOIN dds.dm_time t on t.id = o.order_time_id
 WHERE o.final_status = 'CLOSED'

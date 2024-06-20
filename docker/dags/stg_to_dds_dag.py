@@ -131,7 +131,7 @@ def fill_delivery_from_api(**kwargs):
             new_order_id = resolve_order_id(pg_helper_fetch_cursor, delivery_json["order_id"])
 
             pg_insert_cursor.execute(
-                "INSERT INTO dds.dm_delivery(id, deliveryman_id, order_id, rating, tips) VALUES (%s, %s, %s, %s, %s) "
+                "INSERT INTO dds.fact_delivery(id, deliveryman_id, order_id, rating, tips) VALUES (%s, %s, %s, %s, %s) "
                 "ON CONFLICT(id) DO UPDATE "
                 "SET deliveryman_id = excluded.deliveryman_id,"
                 " order_id = excluded.order_id,"

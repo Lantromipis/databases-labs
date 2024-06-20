@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS dm_order
     order_time_id BIGINT REFERENCES dm_time (id)
 );
 
-CREATE TABLE IF NOT EXISTS dm_delivery
+CREATE TABLE IF NOT EXISTS fact_delivery
 (
     id             BIGINT PRIMARY KEY                    NOT NULL,
     deliveryman_id BIGINT REFERENCES dm_deliveryman (id) NOT NULL,
